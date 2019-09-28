@@ -15,7 +15,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 	```
 3. Install all required dependencies
 	```sh
-	npm install --dev
+	npm install
 	```
 
 4. Builds and serves the Pajé web app, rebuilding on file changes

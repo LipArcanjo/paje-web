@@ -1,0 +1,99 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand" style="cursor: pointer;">
+		<i
+		(click)="isCollapsed = !isCollapsed"
+		[attr.aria-expanded]="!isCollapsed"
+		aria-controls="collapseBasic"
+	class="material-icons md-light md-36">reorder</i>
+	</a>
+	<a class="navbar-brand" href="#">Pajé</a>
+
+	<div class="collapse navbar-collapse justify-content-end">
+		<ul class="navbar-nav">
+			<li class="nav-item ">
+				<a class="nav-link" href="#">
+					<i class="material-icons md-24 md-light">notification_important</i>
+				</a>
+			</li>
+			<li class="nav-item ">
+				<a class="nav-link" href="#">
+					<i class="material-icons md-24 md-light">build</i>
+				</a>
+			</li>
+			<li class="nav-item ">
+				<a class="nav-link" href="#">
+					<i class="material-icons md-24 md-light">exit_to_app</i>
+				</a>
+			</li>
+		</ul>
+	</div>
+</nav>
+
+
+<div id="my-sidebar" class="container-fluid" >
+	<div class="row justify-content-center">
+		<div id="collapseBasic" [collapse]="isCollapsed" class="col-2 bg-dark">
+
+			<nav class="navbar navbar-expand-lg navbar-dark bg-dark position-sticky">
+				<ul class="nav navbar-nav mr-auto flex-column">
+
+
+					<li class="nav-item navbar-brand">
+						<a class="nav-link active text-lg-left" routerLink="/home">
+							<i class="material-icons md-light md-24"> home </i>
+							Home
+						</a>
+					</li>
+
+					<li>
+						<hr>
+					</li>
+
+					<li>
+						<a class="nav-link" routerLink="/data-exploration">
+							<i class="material-icons md-light md-24"> equalizer </i>
+							Data Exploration
+						</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" routerLink="/automl">
+							<img src="assets/images/icons/roboto.svg" class="roboto">
+							AutoML
+						</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" routerLink="/model-analysis">
+							<i class="material-icons md-light md-24"> trending_up </i>
+              Model Analysis
+						</a>
+					</li>
+
+					<li>
+						<hr>
+					</li>
+
+
+					<li class="nav-item">
+						<a class="nav-link" href="#" >Help</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">About Us</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Our Publications</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#">Cite</a>
+					</li>
+				</ul>
+			</nav>
+
+
+		</div>
+		<div class="col-10 justify-content-center">
+			<app-contents></app-contents>
+		</div>
+	</div>
+</div>

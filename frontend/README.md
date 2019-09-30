@@ -2,7 +2,7 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.0.
 
-## Running
+## Running (Arch and similar distros)
 
 1. Install the `npm`
   * For arch linux
@@ -13,7 +13,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 	```sh
 	npm install -g @angular/cli
 	```
-3. Install all required dependencies
+3. Install all required dependencies (inside paje-web/frontend/ folder)
 	```sh
 	npm install
 	```
@@ -24,6 +24,31 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 	```
 
 5. Access the server on `http://localhost:4200/`
+
+## Running (Ubuntu Mint and similar distros)
+1. Install the `npm`
+  ```sh
+  sudo apt install npm
+  ```
+2. Install the Angular framework
+	```sh
+	npm install -g @angular/cli
+	```
+3. Install all required dependencies (inside paje-web/frontend/ folder)
+	```sh
+  sudo apt-get install curl python-software-properties
+  curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
+  sudo apt-get install nodejs
+	npm install
+	```
+
+4. Builds and serves the Pajé web app, rebuilding on file changes
+	```sh
+	ng serve
+	```
+
+5. Access the server on `http://localhost:4200/`
+
 
 ## Development server
 

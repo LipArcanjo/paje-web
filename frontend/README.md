@@ -36,9 +36,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 	```
 3. Install all required dependencies (inside paje-web/frontend/ folder)
 	```sh
-  sudo apt-get install curl python-software-properties
-  curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
-  sudo apt-get install nodejs
+	sudo apt-get install curl python-software-properties
+	curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
+	sudo apt-get install nodejs
 	npm install
 	```
 

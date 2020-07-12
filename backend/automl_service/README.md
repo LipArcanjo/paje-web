@@ -56,6 +56,9 @@ Add the new components and automls in the database script "populate_automl_db.sq
 TO each type of new component and automl need to alter some different stuffs in code, to see how to add each one of the types, see the files model_module, controller_module, preprocessor_module.
 
 ## Other Stuffs
+
 The API REST program utilize the port 8080, ensure its free when execute the program.
+
 Can open  http://0.0.0.0:8080/ui to see the REST REQUESTS and test them.
+
 The file teste.arff is a dataset file to test the service.

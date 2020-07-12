@@ -1,0 +1,70 @@
+
+<!--The tabs changes this part, with the ngSwitch-->
+<div class="container" [ngSwitch]="tab">
+
+    <div *ngIf="show_erro" class="row alert alert-danger" role="alert">
+        
+        <p>Prencha todos os campos adequadamente</p>
+    </div>
+
+    <div *ngIf="show_erro_file" class="row alert alert-danger" role="alert">
+        
+        <p>The dataset file need to be of type <strong>arff</strong> or <strong>csv</strong></p>
+    </div>
+
+    <div *ngSwitchCase="0">
+
+        <div class="row p-2">
+            <div class="col-lg-12" >
+                <h1>Add a New AutoML Request</h1>
+            </div>
+        </div>
+        
+        <hr class="col-lg-12">
+        
+        <div class="row">
+            <div class="col-lg-12 d-flex justify-content-center" >
+                <h4>Select the Database File</h4>
+            </div>
+            <div class=" form-group col-lg-12 custom-file">
+                <input type="file" class="custom-file-input" id="customFile" (change)="onFileChange($event)" style="cursor: pointer;">
+                <label class="custom-file-label" for="customFile" id="file_name" >{{ db_file_name }}</label>
+            </div>
+        </div>
+        
+        <hr class="col-lg-12">
+        <app-controller-selection [controller_selected_id]="controller_selected_id" (controllerSelected)="controllerSelected($event)"></app-controller-selection>
+        <hr class="col-lg-12">
+    </div>
+
+    <div *ngSwitchCase="1">
+        <app-drag-drop  (pipelineChanged)="pipelineChanged($event)"></app-drag-drop>
+    </div>
+
+</div>
+
+<div class="container">
+    <div class="row">
+
+        <!--Cancel-->
+        <div class="col-lg-2" *ngIf="tab == 0">
+            <button type="button" (click)="cancel()" class="btn btn-outline-danger btn-lg">Cancel</button>
+        </div>
+
+        <!--Previous-->
+        <div class="col-lg-2" *ngIf="tab > 0">
+            <button type="button" (click)="previousTab()" class="btn btn-outline-secondary btn-lg">Previous</button>
+        </div>
+        <!--Next-->
+        <div class="col-lg-2" *ngIf="max_tab > tab">
+            <button type="button" (click)="nextTab()" class="btn btn-outline-warning btn-lg">Next</button>
+        </div>
+
+        <!--Confirm-->
+        <div class="col-lg-2" *ngIf="max_tab == tab">
+            <button type="button" (click)="confirm()" class="btn btn-outline-primary btn-lg">Confirm</button>
+        </div>
+
+    </div>
+    <div style="height: 380px;"></div>
+</div>

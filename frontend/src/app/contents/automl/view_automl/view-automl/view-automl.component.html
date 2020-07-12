@@ -1,0 +1,55 @@
+<div class="container">
+
+    <div class="row p-2">
+        <div class="col-lg-12" >
+            <h1>Best Pipeline Found in AutoML Request number #{{automlrequest_id}}</h1>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-lg-3">
+            <h2>{{ metric.name }}</h2>
+            <h2><small>{{(automl_result.metric_result*100).toFixed(2)}}%</small></h2>
+        </div>
+        <div class="col-lg-9">
+            <div class="row " >
+                <div class="col-lg-1 mx-1 px-2 image-bg"
+                    *ngFor="let component of get_pipeline_with_arrow(); let i = index"
+                    [style.backgroundImage]="'url('+ loadimg(component) + ')'" 
+                >
+                    <div *ngIf="component.type != 'seta'" class="py-5 center-text">{{component.initials}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row p-2">
+        <div class="col-lg-12" >
+            <h3>Components in Pipeline</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Initials</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Type</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let component of pipeline; let i = index">
+                        <th scope="row">{{i}}</th>
+                        <td>{{component.initials}}</td>
+                        <td>{{component.name}}</td>
+                        <td>{{component.type}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div style="height: 380px;"></div>
+</div>

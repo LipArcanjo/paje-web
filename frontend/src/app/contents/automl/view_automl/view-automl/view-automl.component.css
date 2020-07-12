@@ -1,0 +1,10 @@
+.image-bg{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.center-text{
+    vertical-align: middle; 
+    text-align: center;
+}

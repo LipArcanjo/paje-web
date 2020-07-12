@@ -1,0 +1,136 @@
+<div class="container" style="position: static;" cdkDropListGroup>
+    <div class="row p-2">
+        <div class="col-lg-12" >
+            <h1>Choose The Pipeline</h1>
+        </div>
+    </div>
+
+    <hr class="col-lg-12">
+
+    <div class="row my-2">
+        <div class="mx-1">
+            <button type="button" class="btn btn-warning" (click)="changeTab('preprocessors')">Preprocessors</button>
+        </div>
+        <div class="mx-1">
+            <button type="button" class="btn btn-danger" (click)="changeTab('models')">Models</button>
+        </div>
+        <div class="mx-1">
+            <button type="button" class="btn btn-info" (click)="changeTab('metrics')">Metrics</button>
+        </div>
+    </div>
+
+    <div [ngSwitch]="tab">
+        <div 
+            id="preprocessors"
+            *ngSwitchCase="'preprocessors'" 
+            class="row border border-dark"
+            [cdkDropListData]="preprocessors"
+            cdkDropListOrientation='horizontal'
+            cdkDropList  center-align cdkDropListSortingDisabled
+        >
+            <div  
+                *ngFor="let item of preprocessors; let j = index"
+                class="col-lg-1 mx-2 px-1 image-bg"
+                cdkDrag
+                (cdkDragStarted)="onSelectableHandle(preprocessors,j)"
+                (cdkDragDropped)="onSelectableDropped(preprocessors,j)"
+                [style.backgroundImage]="'url('+ loadimg(item) + ')'" 
+            >
+                <div *cdkDragPlaceholder class="hide"></div>
+                
+                <div class="py-5 center-text">{{item.initials}}</div>
+            </div> 
+        </div>
+
+        <div 
+            id="models"
+            *ngSwitchCase="'models'" 
+            class="row border border-dark"
+            [cdkDropListData]="models"
+            cdkDropListOrientation='horizontal'
+            cdkDropList center-align cdkDropListSortingDisabled
+        >
+            <div  
+                *ngFor="let item of models; let j = index"
+                class="col-lg-1 mx-2 px-2 image-bg"
+                cdkDrag
+                (cdkDragStarted)="onSelectableHandle(models,j)"
+                (cdkDragDropped)="onSelectableDropped(models,j)"
+                [style.backgroundImage]="'url('+ loadimg(item) + ')'" 
+            >
+                <div *cdkDragPlaceholder class="hide"></div>
+                
+                <div class="py-5 center-text">{{item.initials}}</div>
+            </div> 
+        </div>
+
+        <div 
+            id="metrics"
+            *ngSwitchCase="'metrics'" 
+            class="row border border-dark "
+            [cdkDropListData]="metrics"
+            cdkDropListOrientation='horizontal'
+            cdkDropList center-align cdkDropListSortingDisabled
+        >
+            <div  
+                *ngFor="let item of metrics; let j = index"
+                class="col-lg-1 mx-2 px-2 image-bg"
+                cdkDrag
+                (cdkDragStarted)="onSelectableHandle(metrics,j)"
+                (cdkDragDropped)="onSelectableDropped(metrics,j)"
+                [style.backgroundImage]="'url('+ loadimg(item) + ')'" 
+            >
+                <div *cdkDragPlaceholder class="hide"></div>
+                
+                <div class="py-5 center-text">{{item.initials}}</div>
+            </div> 
+        </div>
+        
+    </div>
+ 
+    <!--linha com o pipeline do automl-->
+    <div class="row d-flex justify-content-center my-2 borders ">
+
+        <div [id]="i" 
+            class="col-lg-1 my-2 px-1" 
+            *ngFor="let l of list; let i = index"
+            [cdkDropListData]="l.list"
+            cdkDropList  (cdkDropListDropped)="drop($event)" center-align cdkDropListSortingDisabled
+        >
+            <div  
+            *ngFor="let item of l.list; let j = index"
+                class="col-lg-12 mx-0 px-1 image-bg"
+                cdkDrag [cdkDragDisabled]="item.type == 'seta' || item.type == 'file'"
+                [style.backgroundImage]="'url('+ loadimg(item) + ')'" 
+                class="image-bg"
+            >
+                <div *cdkDragPlaceholder class="hide"></div>
+                    
+                <div *ngIf="item.type != 'seta'" class="py-5 center-text">{{item.initials}}</div>
+                <div *ngIf="item.type == 'seta'" class="py-5 mt-2 center-text"></div>
+            </div>              
+            
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div 
+            id="trash"
+            class="col-lg-2"
+            cdkDropListOrientation='horizontal'
+            cdkDropList (cdkDropListDropped)="dropTrash($event)"  center-align cdkDropListSortingDisabled
+        >
+            <div  
+                class="col-lg-12 mx-2 px-1 image-bg"
+                cdkDrag cdkDragDisabled
+                [style.backgroundImage]="'url(assets/img/file.png)'" 
+            >
+                <div *cdkDragPlaceholder class="hide"></div>
+                
+                <div class="py-4 center-text">Trash</div>
+            </div> 
+        </div>
+    </div>
+    <hr class="col-lg-12">
+</div>

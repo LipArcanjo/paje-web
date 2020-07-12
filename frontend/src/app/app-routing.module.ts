@@ -1,3 +1,4 @@
+import { AutomlModule } from './contents/automl/automl.module';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { NotfoundComponent } from './notfound/notfound.component';
@@ -10,7 +11,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'data-exploration', component: DataExplorationComponent },
-  { path: 'automl', component: AutomlComponent },
+  { path: 'automl', loadChildren: () => AutomlModule },
   { path: 'model-analysis', component: ModelAnalysisComponent },
 ];
 

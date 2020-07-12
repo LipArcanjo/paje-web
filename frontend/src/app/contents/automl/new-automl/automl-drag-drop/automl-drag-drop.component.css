@@ -1,0 +1,32 @@
+.image-bg{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.center-text{
+    vertical-align: middle; 
+    text-align: center;
+}
+
+.borders div > div{
+    border: 0;
+}
+.borders div{
+    border-top: 1px dashed;
+    border-bottom: 1px dashed;
+}
+
+.borders div:first-child{
+    border-left:1px dashed;
+} 
+.borders div:last-child{
+    border-right:1px dashed;
+} 
+
+.hide{
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}

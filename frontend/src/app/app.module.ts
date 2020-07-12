@@ -21,7 +21,6 @@ import { NotfoundComponent } from './notfound/notfound.component';
 import {MatTableModule} from '@angular/material/table';
 import { ChangeDetectorRef } from '@angular/core';
 import { DataExplorationComponent } from './contents/data-exploration/data-exploration.component';
-import { AutomlComponent } from './contents/automl/automl.component';
 import { ModelAnalysisComponent } from './contents/model-analysis/model-analysis.component';
 import { HomeComponent } from './contents/home/home.component';
 // import { MatPaginator } from '@angular/material';
@@ -36,7 +35,6 @@ import { HomeComponent } from './contents/home/home.component';
     ContentsComponent,
     NotfoundComponent,
     DataExplorationComponent,
-    AutomlComponent,
     ModelAnalysisComponent,
     HomeComponent,
   ],

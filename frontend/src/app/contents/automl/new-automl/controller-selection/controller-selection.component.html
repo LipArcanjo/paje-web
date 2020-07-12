@@ -1,0 +1,22 @@
+<div class="container">
+
+    
+    <div class="row justify-content-md-center">
+        <div class="col-lg-12 d-flex justify-content-center" >
+            <h4>Select the Controller</h4>
+        </div>
+    
+
+        <div *ngFor="let controller of controllers" 
+            class="card col-lg-3 mx-1" [id]="controller.id"
+            [ngClass]="{'selected':controller.id == controller_selected_id}"
+            (click)="changeControllerSelected(controller.id)" style="cursor: pointer;"
+        >
+            <div class="card-body">
+            <h4 class="card-title">{{controller.name}}</h4>
+            <p class="card-text">{{controller.description}}</p>
+            </div>
+        </div>
+
+    </div>
+</div>

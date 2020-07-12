@@ -1,0 +1,11 @@
+scipy
+numpy
+pandas
+scikit-learn
+blosc
+zstd
+lz4
+imbalanced-learn
+liac-arff
+SQLAlchemy>=1.0.13
+psycopg2-binary

@@ -1,0 +1,290 @@
+swagger: '2.0'
+info:
+  title: Pet Shop Example API
+  version: "0.1"
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /get_models:
+    get:
+      tags: [Pipeline Components]
+      operationId: app.get_models
+      summary: Get all models
+      responses:
+        200:
+          description: Return models
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Model'
+  /get_preprocessors:
+    get:
+      tags: [Pipeline Components]
+      operationId: app.get_preprocessors
+      summary: Get all preprocessors
+      responses:
+        200:
+          description: Return preprocessors
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Preprocessor'
+  /get_metrics:
+    get:
+      tags: [Pipeline Components]
+      operationId: app.get_metrics
+      summary: Get all metrics
+      responses:
+        200:
+          description: Return metrics
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Metric'
+  /get_controllers:
+    get:
+      tags: [Pipeline Components]
+      operationId: app.get_controllers
+      summary: Get all controllers
+      responses:
+        200:
+          description: Return controllers
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Controller'
+  /get_all_automls:
+    get:
+      tags: [AutoML Request]
+      operationId: app.get_all_automlrequests
+      summary: Get all automlrequest maded
+      responses:
+        400:
+          description: Return all automls automlrequests maded
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AutoMLRequest'
+  /get_automl_result:
+    get:
+      tags: [AutoML Request]
+      operationId: app.get_automl_result
+      summary: Get the automl result with the best pipeline found
+      parameters:
+        - $ref: '#/parameters/automlrequest_id'
+      responses:
+        200:
+          description: Return the automl result with the best pipeline found
+          schema:
+            $ref: '#/definitions/AutoMLRequest'
+  /add_automl_request:
+    post:
+      tags: [AutoML Request]
+      operationId: app.post_addAutomlRequest
+      summary: Add a new AutoML Request
+      parameters:
+        - in: body
+          name: body
+          required: true
+          schema:
+            type: object
+            required:
+              - models
+              - preprocessors
+              - metrics
+              - db_file
+              - db_file_name
+              - controller
+            properties:
+              models:
+                type: array
+                items:
+                  $ref: '#/definitions/Model'
+              preprocessors:
+                type: array
+                items:
+                  $ref: '#/definitions/Preprocessor'
+              metrics:
+                type: array
+                items:
+                  $ref: '#/definitions/Metric'
+              db_file:
+                type: string
+                format: base64
+              db_file_name:
+                type: string
+              controller:
+                $ref: '#/definitions/Controller'
+      responses:
+        200:
+          description: Added The AutoML Request
+        404:
+          description: Unknow Error
+
+parameters:
+  automlrequest_id:
+    name: automlrequest_id
+    description: Id of a AutoML Request
+    in: query
+    type: integer
+    required: true
+
+definitions:
+  Model:
+    type: object
+    required:
+      - initials
+      - name
+    properties:
+      id:
+        type: integer
+        description: Unique identifier
+        example: 123
+      initials:
+        type: string
+        description: servers for substitute name in small places
+        example: "DT"
+        minLength: 1
+        maxLength: 5
+      name:
+        type: string
+        description: the name of the model
+        example: "Decision Tree"
+        minLength: 1
+        maxLength: 50
+
+  Preprocessor:
+    type: object
+    required:
+      - initials
+      - name
+    properties:
+      id:
+        type: integer
+        description: Unique identifier
+        example: 123
+      initials:
+        type: string
+        description: servers for substitute name in small places
+        example: "ROS"
+        minLength: 1
+        maxLength: 5
+      name:
+        type: string
+        description: the name of the preprocessor
+        example: "RunOverSample"
+        minLength: 1
+        maxLength: 50
+
+  Metric:
+    type: object
+    required:
+      - initials
+      - name
+    properties:
+      id:
+        type: integer
+        description: Unique identifier
+        example: 123
+      initials:
+        type: string
+        description: servers for substitute name in small places
+        example: "ACC"
+        minLength: 1
+        maxLength: 5
+      name:
+        type: string
+        description: the name of the metric
+        example: "Accuracy"
+        minLength: 1
+        maxLength: 50
+
+  Controller:
+    type: object
+    required:
+      - name
+      - description
+    properties:
+      id:
+        type: integer
+        description: Unique identifier
+        example: 123
+      name:
+        type: string
+        description: the name of the controller
+        example: "RandomAutoML"
+        minLength: 1
+        maxLength: 50
+      description:
+        type: string
+        description: a short description about the controller
+        example: "This controller selection for samples is based on random choices"
+        minLength: 1
+        maxLength: 500
+
+  Component:
+    type: object
+    description: A component of a pipeline, can be a preprocessor, model or metric
+    required:
+      - initials
+      - name
+    properties:
+      id:
+        type: integer
+        description: Unique identifier
+        example: 123
+      initials:
+        type: string
+        description: servers for substitute name in small places
+        example: "ACC"
+        minLength: 1
+        maxLength: 5
+      name:
+        type: string
+        description: the name of the component
+        example: "Accuracy"
+        minLength: 1
+        maxLength: 50
+
+  DBFile:
+    type: object
+    description: Represents a instance of a database of a request.
+    properties:
+      id:
+        type: integer
+        description: Unique identifier
+        example: 123
+      dbfile_name:
+        type: string
+        description: The name of the database file
+        example: 'iris.csv'
+
+  AutoMLRequest:
+    type: object
+    properties:
+      id:
+        type: integer
+        description: Unique identifier
+        example: 123
+      creation_date:
+        type: string
+        description: The date when the request was made
+        format: date-time
+      status:
+        type: string
+        description: The Status of The Request
+      metric_result:
+        type: number
+        format: float
+        description: The result of the best pipeline found in the metric choiced
+      dbfile:
+        $ref: '#/definitions/DBFile'
+      controller:
+        $ref: '#/definitions/Controller'
+      pipeline:
+        type: array
+        items:
+          $ref: '#/definitions/Component'
+      

@@ -20,8 +20,10 @@ models_dict = {
 def get_my_models(models):
     
     my_models_aux = []
+    
     for model in models:
         my_models_aux.append(models_dict[model.name])
 
     my_models = [Any.cs(config_spaces=my_models_aux)]
+
     return my_models

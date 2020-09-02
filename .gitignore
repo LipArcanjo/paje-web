@@ -1,0 +1,3 @@
+frontend/node_modules/
+backend/automl_service/venv/
+backend/automl_service/process_pipeline/paje

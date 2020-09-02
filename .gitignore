@@ -1,3 +1,7 @@
+backend/automl_service/API_REST/__pycache__/
+backend/automl_service/process_pipeline/__pycache__/
+backend/automl_service/API_REST/shared/__pycache__/
+backend/automl_service/process_pipeline/shared/__pycache__/
 frontend/node_modules/
 backend/automl_service/venv/
 backend/automl_service/process_pipeline/paje

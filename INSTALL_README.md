@@ -38,19 +38,19 @@ $ sudo apt install postgresql postgresql-contrib
 Now execute the commands to create the database:
 
 ```
-$ psql -U postgres -c "CREATE DATABASE automlservice"
+$ psql -U postgres -c "CREATE DATABASE paje"
 ```
 
 Execute the script to create the database's tables:
 
 ```
-$ psql -U postgres -d teste -f bd_automl_service.sql
+$ psql -U postgres -d paje -f bd_automl_service.sql
 ```
 
 Execute the scrpit to populate the database:
 
 ```
-$ psql -U postgres -d teste -f populate_automl_db.sql 
+$ psql -U postgres -d paje -f populate_automl_db.sql 
 ```
 
 #### Installing the service and the required libraries

@@ -7,8 +7,10 @@ import datetime
 
 Base = declarative_base()
 
-'''db_url, change this to your respective database'''
-db_url = 'postgresql://postgres:postgres@localhost:5432/paje'
+'''db_url, change this to your respective database
+format: postgresql://user:password@host:port/database_name
+'''
+db_url = 'postgresql://postgres:@localhost:5432/paje'
 
 #all classes below is tables in the database.
 

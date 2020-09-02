@@ -5,3 +5,4 @@ backend/automl_service/process_pipeline/shared/__pycache__/
 frontend/node_modules/
 backend/automl_service/venv/
 backend/automl_service/process_pipeline/paje/
+backend/automl_service/dbs/
